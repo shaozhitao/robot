@@ -1,0 +1,1587 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <script src="{% static 'js/echarts.js'%}"></script>
+  <title>Document</title><style>
+        body{
+            background:deepskyblue;
+{#            background-image: url({% static "imge/body.jpg"%});#}
+{#            background-size: 100%;#}
+        }
+        #d1{
+            height:60px;
+            background-color:#0032D3;
+            font-size: 40px;
+            line-height:60px;
+            letter-spacing:20px;
+        }
+        #d2{
+            height:60px;
+            width:200px;
+            float:left;
+        }
+        #dak1,#dak2,#dak3,#dak4,#dak5{
+            height:20px;
+        }
+        #dk1{
+            height:30px;
+            background-color: #3c84e8;
+        }
+        #d3{
+
+            height:60px;
+            float:right;
+            line-height:60px;
+        }
+
+        #da1{
+            height:30px;
+{#            width:40%;#}
+            font-size:20px;
+{#            float:left;#}
+            text-align: center;
+            background-color:blueviolet;
+
+        }
+        #da2{
+            text-align: center;
+            height:30px;
+
+            font-size:20px;
+
+            background: red;
+        }
+        #da2_1,#da2_2{
+            height:100%;
+            width:50%;
+            float:left;
+        }
+        #da3{
+            text-align: center;
+            height:60px;
+            line-height:60px;
+{#            width:40%;#}
+            font-size:20px;
+{#            float:left;#}
+{#            background-color: #0f9d00;#}
+        }
+        #dark{
+            height:110px;
+        }
+        #da4,#da4_1,#da4_2{
+            height:330px;
+
+            font-size:20px;
+
+{#            background-color: #3c84e8;#}
+        }
+        #da4_3,#da4_4{
+            width:50%;
+            height:100%;
+
+
+        }
+        #da4_3{
+            background-color: #c0fcc0;
+            float:left;
+        }
+        #da4_4{
+            background-color: red;
+            text-align: center;
+            float:left;
+        }
+        #da4r{
+            height:1110px;
+            width:60%;
+            float:left;
+{#            background-color: #4b98ce;#}
+        }
+        #da4l{
+            height:1229px;
+            width:40%;
+            font-size:20px;
+            float:left;
+{#            background-color: #3c84e8;#}
+        }
+        #da5{
+            text-align: center;
+            height:30px;
+{#            width:40%;#}
+            font-size:20px;
+{#            float:left;#}
+            background-color: #9b1517;
+        }
+        #da6{
+            height:330px;
+            font-size:20px;
+{#            background-color: #9b1517;#}
+        }
+        #da6_1{
+            height:100%;
+            width:75%;
+            margin-left:12.5%;
+
+        }
+        #da7{
+            text-align: center;
+            height:30px;
+            font-size:20px;
+            background-color: #9b1517;
+        }
+        #da8{
+            text-align: center;
+            height:800px;
+            font-size: 20px;
+{#            background-color: #3c84e8;#}
+        }
+        #da9{
+            text-align: center;
+            height:30px;
+            font-size:20px;
+            background-color: #0f9d00;
+        }
+        #da10,#da11{
+            height:400px;
+            font-size:20px;
+{#            background-color: #9b1517;#}
+        }
+        table tr:nth-child(2n+1){
+            background-color: #bbccdd;
+        }
+        table tr:nth-child(2n+2){
+            background-color: #0664a4;
+        }
+        #ls{
+            background-color: #c0fcc0;
+        }
+        #jd1,#jd3,#jd4,#jd6{
+            width:33.33%;
+            height:100%;
+            float:left;
+            background-color: #c0fcc0;
+        }
+        #jd2,#jd5{
+            width:33.33%;
+            height:100%;
+            float:left;
+            background-color: #9b1517;
+        }
+        #ds{
+            width:100%;
+            height:1030px;
+{#            background-color: red;#}
+            float:left;
+        }
+        #ds1{
+            height:40px;
+            text-align: center;
+            font-size: 30px;
+            line-height: 40px;
+            letter-spacing: 40px;
+            background-color: #9b1517;
+        }
+        #ds2,#ds3,#ds4,#ds5,#ds6,#ds7{
+            width:50%;
+            height:330px;
+            float:left;
+        }
+        #ds2,#ds4,#ds5,#ds7{
+            background-color: #c0fcc0;
+        }
+        #ds3,#ds6{
+
+            background-color: #bbccdd;
+        }
+
+      </style>
+
+ </head>
+ <body>
+    <div id="d2">
+        <img src="{% static 'imge/hua.jpg'%}" alt="加载中">
+    </div>
+
+    <div id="d3">
+{#        <input type="botton" value="返回首页">#}
+        <button>返回首页</button>
+    </div>
+    <div id="d1" align="center" >机器人本机参数监控界面</div>
+
+    <div id="dk1"></div>
+        <div id="da4l">
+            <div id="da5">机器人六个轴速度</div>
+            <div id="da6">
+                <div id="da6_1"></div>
+            </div>
+            <div id="dak2"></div>
+            <div id="da7">机器人坐标</div>
+            <div id="da8" align="center">机器人坐标表格显示
+                <table width="90%" height="600px" border="1" cellspacing="0" cellpadding="0"\
+                style="margin-left:20px;margin-top:100px;">
+                    <tr >
+                        <td>日期</td>
+                        <td>年月</td>
+                        <td>时分</td>
+                    </tr>
+                    <tr>
+                        <td>a坐标值:</td>
+                        <td>数据a</td>
+                        <td rowspan="6" valign="middle" id="ls">历史数据</td>
+                    </tr>
+                    <tr>
+                        <td>b坐标值:</td>
+                        <td>数据b</td>
+                    </tr>
+                    <tr>
+                        <td>c坐标值:</td>
+                        <td>数据c</td>
+                    </tr>
+                    <tr>
+                        <td>x坐标值:</td>
+                        <td>数据x</td>
+                    </tr>
+                    <tr>
+                        <td>y坐标值:</td>
+                        <td>数据y</td>
+                    </tr>
+                    <tr>
+                        <td>z坐标值:</td>
+                        <td>数据z</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="dak3"></div>
+        </div>
+
+        <div id="da4r">
+            <div id="da2">
+                <div id="da2_1">机器人六个轴的转矩</div>
+                <div id="da2_2">机器人状态</div>
+            </div>
+            <div id="da4">
+                <div id="da4_3"></div>
+                <div id="da4_4">
+
+{#                    <div id="da3">#}
+                        <tr>
+                            <td><input type=button style="background:red;margin-top: 140px;width:80px;height:40px" value="停止" /></td>
+                            <td width="10%">&nbsp;</td>
+                            <td><input type=button style="background:yellow;width:80px;height:40px" value="等待" /></td>
+                            <td width="10%">&nbsp;</td>
+                            <td><input type=button style="background:green;width:80px;height:40px" value="运行" /></td>
+                        </tr>
+{#                    </div>#}
+                </div>
+            </div>
+
+            <div id="dak4"></div>
+            <div id="da9">机器人六个轴角度</div>
+            <div id="da10">
+                <div id="jd1"></div>
+                <div id="jd2">2</div>
+                <div id="jd3">3</div>
+            </div>
+
+            <div id="da11">
+                <div id="jd4">4机器人仪表盘</div>
+                <div id="jd5">5</div>
+                <div id="jd6">6</div>
+            </div>
+        </div>
+    <div id="ds">
+        <div id="ds1">机器人六个轴速度</div>
+{#        <div id="ds_1">#}
+        <div id="ds2">1</div>
+        <div id="ds3">2</div>
+        <div id="ds4">3</div>
+        <div id="ds5">4</div>
+        <div id="ds6">5</div>
+        <div id="ds7">6</div>
+{#        </div>#}
+    </div>
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myDa6 = echarts.init(document.getElementById('da6_1'));
+        var myDa4 = echarts.init(document.getElementById('da4_3'));
+        var myJd1 = echarts.init(document.getElementById('jd1'));
+        var myJd2 = echarts.init(document.getElementById('jd2'));
+        var myJd3 = echarts.init(document.getElementById('jd3'));
+        var myJd4 = echarts.init(document.getElementById('jd4'));
+        var myJd5 = echarts.init(document.getElementById('jd5'));
+        var myJd6 = echarts.init(document.getElementById('jd6'));
+        var myDs2 = echarts.init(document.getElementById('ds2'));
+        var myDs3 = echarts.init(document.getElementById('ds3'));
+        var myDs4 = echarts.init(document.getElementById('ds4'));
+        var myDs5 = echarts.init(document.getElementById('ds5'));
+        var myDs6 = echarts.init(document.getElementById('ds6'));
+        var myDs7 = echarts.init(document.getElementById('ds7'));
+
+
+        var optionDa4 = {
+            title: {
+                text: '机器人六个轴转矩监控'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["a轴","b轴","c轴","x轴","y轴","z轴"]
+            },
+            yAxis: {},
+            series: [{
+                name: '角度值',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+                    }]
+        };
+
+        var optionJd1 = {
+    tooltip : {
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'业务指标',
+            type:'gauge',
+            min:-195,
+            max:195,
+            splitNumber: 13,       // 分割段数，默认为5
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: [[0.077, '#ff4500'],[0.923, '#48b'],[1, '#ff4500']],
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 10,   // 每份split细分多少段
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                show: true,        // 默认显示，属性show控制显示与否
+                length :30,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer : {
+                width : 5
+            },
+            title : {
+                show : true,
+                offsetCenter: [0, '-40%'],       // x, y，单位px
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            detail : {
+                formatter:'{value}°',
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto',
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 50, name: '１轴角度值'}]
+        }
+    ]
+};
+
+        var optionJd2 = {
+    tooltip : {
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'业务指标',
+
+            type:'gauge',
+            min:-97,
+            max:165,
+            splitNumber: 10,       // 分割段数，默认为5
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: [[0.027, '#ff4500'],[0.973, '#48b'],[1, '#ff4500']],
+                    width: 8
+                }
+
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 10,   // 每份split细分多少段
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                show: true,        // 默认显示，属性show控制显示与否
+                length :30,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer : {
+                width : 5
+            },
+            title : {
+                show : true,
+                offsetCenter: [0, '-40%'],       // x, y，单位px
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            detail : {
+                formatter:'{value}°',
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto',
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 50, name: '２轴角度值'}]
+        }
+    ]
+};
+
+        var optionJd3 = {
+    tooltip : {
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'业务指标',
+
+            type:'gauge',
+            min:-210,
+            max:80,
+            splitNumber: 10,       // 分割段数，默认为5
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: [[0.0345, '#ff4500'],[0.9655, '#48b'],[1, '#ff4500']],
+                    width: 8
+                }
+
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 10,   // 每份split细分多少段
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                show: true,        // 默认显示，属性show控制显示与否
+                length :30,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer : {
+                width : 5
+            },
+            title : {
+                show : true,
+                offsetCenter: [0, '-40%'],       // x, y，单位px
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            detail : {
+                formatter:'{value}°',
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto',
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 50, name: '３轴角度值'}]
+        }
+    ]
+};
+
+        var optionJd4 = {
+    tooltip : {
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'业务指标',
+
+            type:'gauge',
+            min:-180,
+            max:180,
+            splitNumber: 10,       // 分割段数，默认为5
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: [[0.0278, '#ff4500'],[0.9722, '#48b'],[1, '#ff4500']],
+                    width: 8
+                }
+
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 10,   // 每份split细分多少段
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                show: true,        // 默认显示，属性show控制显示与否
+                length :30,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer : {
+                width : 5
+            },
+            title : {
+                show : true,
+                offsetCenter: [0, '-40%'],       // x, y，单位px
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            detail : {
+                formatter:'{value}°',
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto',
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 50, name: '４轴角度值'}]
+        }
+    ]
+};
+
+        var optionJd5 = {
+    tooltip : {
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'业务指标',
+
+            type:'gauge',
+            min:-140,
+            max:140,
+            splitNumber: 10,       // 分割段数，默认为5
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: [[0.0714, '#ff4500'],[0.9286, '#48b'],[1, '#ff4500']],
+                    width: 8
+                }
+
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 10,   // 每份split细分多少段
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                show: true,        // 默认显示，属性show控制显示与否
+                length :30,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer : {
+                width : 5
+            },
+            title : {
+                show : true,
+                offsetCenter: [0, '-40%'],       // x, y，单位px
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            detail : {
+                formatter:'{value}°',
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto',
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 50, name: '５轴角度值'}]
+        }
+    ]
+};
+
+        var optionJd6 = {
+    tooltip : {
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'业务指标',
+
+            type:'gauge',
+            min:-380,
+            max:380,
+            splitNumber: 10,       // 分割段数，默认为5
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: [[0.0263, '#ff4500'],[0.9737, '#48b'],[1, '#ff4500']],
+                    width: 8
+                }
+
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 10,   // 每份split细分多少段
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                show: true,        // 默认显示，属性show控制显示与否
+                length :30,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer : {
+                width : 5
+            },
+            title : {
+                show : true,
+                offsetCenter: [0, '-40%'],       // x, y，单位px
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            detail : {
+                formatter:'{value}°',
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: 'auto',
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 50, name: '６轴角度值'}]
+        }
+    ]
+};
+
+        var optionDs2 = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'速度',
+            type:'gauge',
+            z: 3,
+            min:0,
+            max:180,
+            splitNumber:10,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 40, name: '1轴速度'}]
+        },
+        {
+            name:'转速',
+            type:'gauge',
+            center : ['25%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:180,
+
+            endAngle:45,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '加速度'}]
+        },
+
+       {
+            name:'转速',
+            type:'gauge',
+            center : ['76%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:180,
+
+            startAngle:135,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '减速度'}]
+        },
+
+    ]
+};
+
+        var optionDs3 = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'速度',
+            type:'gauge',
+            z: 3,
+            min:0,
+            max:180,
+            splitNumber:10,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 40, name: '2轴速度'}]
+        },
+        {
+            name:'转速',
+            type:'gauge',
+            center : ['25%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:900,
+
+            endAngle:45,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '加速度'}]
+        },
+
+       {
+            name:'转速',
+            type:'gauge',
+            center : ['76%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:900,
+
+            startAngle:135,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '减速度'}]
+        },
+
+    ]
+};
+
+        var optionDs4 = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'速度',
+            type:'gauge',
+            z: 3,
+            min:0,
+            max:200,
+            splitNumber:10,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 40, name: '3轴速度'}]
+        },
+        {
+            name:'转速',
+            type:'gauge',
+            center : ['25%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:1050,
+
+            endAngle:45,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '加速度'}]
+        },
+
+       {
+            name:'转速',
+            type:'gauge',
+            center : ['76%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:1050,
+
+            startAngle:135,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '减速度'}]
+        },
+
+    ]
+};
+
+        var optionDs5 = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'速度',
+            type:'gauge',
+            z: 3,
+            min:0,
+            max:450,
+            splitNumber:10,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 40, name: '4轴速度'}]
+        },
+        {
+            name:'转速',
+            type:'gauge',
+            center : ['25%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:2250,
+
+            endAngle:45,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '加速度'}]
+        },
+
+       {
+            name:'转速',
+            type:'gauge',
+            center : ['76%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:2250,
+
+            startAngle:135,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '减速度'}]
+        },
+
+    ]
+};
+
+        var optionDs6 = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'速度',
+            type:'gauge',
+            z: 3,
+            min:0,
+            max:320,
+            splitNumber:10,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 40, name: '5轴速度'}]
+        },
+        {
+            name:'转速',
+            type:'gauge',
+            center : ['25%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:1600,
+
+            endAngle:45,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '加速度'}]
+        },
+
+       {
+            name:'转速',
+            type:'gauge',
+            center : ['76%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:1600,
+
+            startAngle:135,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '减速度'}]
+        },
+
+    ]
+};
+
+        var optionDs7 = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name:'速度',
+            type:'gauge',
+            z: 3,
+            min:0,
+            max:450,
+            splitNumber:10,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 40, name: '6轴速度'}]
+        },
+        {
+            name:'转速',
+            type:'gauge',
+            center : ['25%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:2250,
+
+            endAngle:45,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '加速度'}]
+        },
+
+       {
+            name:'转速',
+            type:'gauge',
+            center : ['76%', '55%'],    // 默认全局居中
+            radius : '70%',
+            min:0,
+            max:2250,
+
+            startAngle:135,
+            splitNumber:5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length :20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title : {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 1.5, name: '减速度'}]
+        },
+
+    ]
+};
+
+
+        myDa6.setOption(optionDa4);
+        myDa4.setOption(optionDa4);
+        myJd1.setOption(optionJd1);
+        myJd2.setOption(optionJd2);
+        myJd3.setOption(optionJd3);
+        myJd4.setOption(optionJd4);
+        myJd5.setOption(optionJd5);
+        myJd6.setOption(optionJd6);
+        myDs2.setOption(optionDs2);
+        myDs3.setOption(optionDs3);
+        myDs4.setOption(optionDs4);
+        myDs5.setOption(optionDs5);
+        myDs6.setOption(optionDs6);
+        myDs7.setOption(optionDs7);
+    </script>
+
+
+
+
+
+	<!-- 表单控件编写与此，能显示，但不能被提交 -->
+ </body>
+</html>

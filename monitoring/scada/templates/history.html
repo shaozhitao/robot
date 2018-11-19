@@ -1,0 +1,453 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{#    定义字符集#}
+    <meta charset="UTF-8">
+{#    定义网页关键字#}
+    <meta name="keywords" content="" />
+{#    定义网站内容描述#}
+    <meta name="description" content="" />
+{#    viewport表示可视区域，设置宽度等于设备、缩放大小、缩放比例、是否可以手动缩放#}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, \
+      maximum-scale=1.0, user-scalable=yes" />
+{#    设置格式检测，禁止把数字转化为拨号连接#}
+    <meta name="format-detection" content="telephone=no" />
+{#    显示苹果工具栏和菜单栏，可不写，默认为yes#}
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+{#    设置控制状态栏显示样式，有三种default、black、black-translucent#}
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="author" content="duanliang, duanliang920.com" />
+{#    导入echarts包#}
+    <script src="{% static 'js/echarts.js'%}"></script>
+{#    标题名称#}
+    <title>坐标历史数据</title>
+    <style>
+        #d1,#d2,#d3,#d4,#d5,#d6{
+            height:360px;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">机器人历史坐标折线图</div>
+    <div align="right">
+        <button onclick="qingqiu()">刷新</button>
+    </div>
+    <div id="d1"></div>
+    <div id="d2"></div>
+    <div id="d3"></div>
+    <div id="d4"></div>
+    <div id="d5"></div>
+    <div id="d6"></div>
+
+    <script type="text/javascript">
+        var myDa = echarts.init(document.getElementById('d1'));
+        var myDb = echarts.init(document.getElementById('d2'));
+        var myDc = echarts.init(document.getElementById('d3'));
+        var myDx = echarts.init(document.getElementById('d4'));
+        var myDy = echarts.init(document.getElementById('d5'));
+        var myDz = echarts.init(document.getElementById('d6'));
+
+        var optiona = {
+        title : {
+            text: '坐标变化展示',
+            subtext: 'a坐标历史数据'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['最高值','最低值']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : '00:00:00'
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+{#                axisLabel : {#}
+{#                    formatter: '{value} °C'#}
+{#                }#}
+            }
+        ],
+        series : [
+            {
+                name:'a坐标',
+                type:'line',
+                data:30,
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            }
+
+
+        ]
+    };
+
+            var optionb = {
+        title : {
+            text: '坐标变化展示',
+            subtext: 'b坐标历史数据'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['最高值','最低值']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : '00:00:00'
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+{#                axisLabel : {#}
+{#                    formatter: '{value} °C'#}
+{#                }#}
+            }
+        ],
+        series : [
+            {
+                name:'b坐标',
+                type:'line',
+                data:30,
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            },
+        ]
+    };
+
+            var optionc = {
+        title : {
+            text: '坐标变化展示',
+            subtext: 'c坐标历史数据'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['最高值','最低值']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : '00:00:00'
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+{#                axisLabel : {#}
+{#                    formatter: '{value} °C'#}
+{#                }#}
+            }
+        ],
+        series : [
+            {
+                name:'c坐标',
+                type:'line',
+                data:30,
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            }
+
+
+        ]
+    };
+
+            var optionx = {
+        title : {
+            text: '坐标变化展示',
+            subtext: 'x坐标历史数据'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['最高值','最低值']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : '00:00:00'
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+{#                axisLabel : {#}
+{#                    formatter: '{value} °C'#}
+{#                }#}
+            }
+        ],
+        series : [
+            {
+                name:'x坐标',
+                type:'line',
+                data:30,
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            }
+
+
+        ]
+    };
+
+            var optiony = {
+        title : {
+            text: '坐标变化展示',
+            subtext: 'y坐标历史数据'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['最高值','最低值']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : '00:00:00'
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+{#                axisLabel : {#}
+{#                    formatter: '{value} °C'#}
+{#                }#}
+            }
+        ],
+        series : [
+            {
+                name:'y坐标',
+                type:'line',
+                data:30,
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            }
+
+
+        ]
+    };
+
+            var optionz = {
+        title : {
+            text: '坐标变化展示',
+            subtext: 'z坐标历史数据'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['最高值','最低值']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : '00:00:00'
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+{#                axisLabel : {#}
+{#                    formatter: '{value} °C'#}
+{#                }#}
+            }
+        ],
+        series : [
+            {
+                name:'z坐标',
+                type:'line',
+                data:30,
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            }
+
+
+        ]
+    };
+
+
+            var xmldoc=new XMLHttpRequest();
+{#            timeTicket = setInterval(function (){#}
+            function qingqiu() {
+            xmldoc.onreadystatechange = function () {
+                if (xmldoc.readyState == 4 && xmldoc.status == 200) {
+                    var mmm = xmldoc.responseText;
+                    var obj = eval("(" + mmm + ")");
+
+
+
+{#                    optionDa4.series[0].data = obj.l;#}
+                    {#                optionJd1.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;#}
+
+                    optiona.xAxis[0].data = obj.sj.toFixed(2) - 0;
+
+                    optiona.series[0].data = obj.a.toFixed(2) - 0;
+                    optionb.series[0].data = obj.b.toFixed(2) - 0;
+                    optionc.series[0].data = obj.c.toFixed(2) - 0;
+                    optionx.series[0].data = obj.x.toFixed(2) - 0;
+                    optiony.series[0].data = obj.y.toFixed(2) - 0;
+                    optionz.series[0].data = obj.z.toFixed(2) - 0;
+                    // 使用刚指定的配置项和数据显示图表。
+                    myDa.setOption(optiona);
+                    myDb.setOption(optionb);
+                    myDc.setOption(optionc);
+                    myDx.setOption(optionx);
+                    myDy.setOption(optiony);
+                    myDz.setOption(optionz);
+                }
+            }
+            xmldoc.open("GET", "http://219.143.186.88:8888/scada/coordinates/", true);
+            xmldoc.send();
+        }
+
+
+        myDa.setOption(optiona);
+        myDb.setOption(optionb);
+        myDc.setOption(optionc);
+        myDx.setOption(optionx);
+        myDy.setOption(optiony);
+        myDz.setOption(optionz);
+  </script>
+
+
+
+
+
+</body>
+</html>
