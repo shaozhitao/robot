@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+
+  <title>SCADA平台数据</title>
+ </head>
+ <body>
+	<table border="5" bgcolor="#28FF28" width="400" align="center" cellpadding="30" cellspacing="0">
+		<tr>
+			<td></td>
+			<td><font><b>按钮1</b></font></td>
+			<td><b>按钮2</b></td>
+			<td><b>按钮3</b></td>
+			<td><b>按钮4</b></td>
+			<td><b>指示灯1</b></td>
+			<td><b>指示灯2</b></td>
+			<td><b>指示灯3</b></td>
+			<td><b>指示灯4</b></td>
+			<td><b>温度表 ℃</b></td>
+			<td><b>压力表 Kpa</b></td>
+		</tr>
+		<tbody bgcolor="D2A2CC">
+            <tr>
+				<td><b>时间</b></td>
+				<td colspan="10" align="center">2018.10.31 12：00</td>
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+			</tr>
+			<tr>
+				<td><b>当前值</b></td>
+				<td>{{ button_1 }}</td>
+				<td>{{ button_2 }}</td>
+				<td>{{ button_3 }}</td>
+				<td>{{ button_4 }}</td>
+				<td>{{ lamp_1 }}</td>
+				<td>{{ lamp_2 }}</td>
+				<td>{{ lamp_3 }}</td>
+				<td>{{ lamp_4 }}</td>
+				<td>{{ temperature }}</td>
+				<td>{{ pressure }}</td>
+			</tr>
+{#			<tr>#}
+{#				<td><b>时间</b></td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#				<td>2018.10.31 12：00</td>#}
+{#			</tr>#}
+			<tr>
+				<td><b>变量地址</b></td>
+				<td>%I00105</td>
+				<td>%I00106</td>
+				<td>%I00107</td>
+				<td>%I00108</td>
+				<td>%Q00105</td>
+				<td>%Q00106</td>
+				<td>%Q00107</td>
+				<td>%Q00108</td>
+				<td>%AI1325</td>
+				<td>%AI1327</td>
+			</tr>
+		</tbody>
+ </body>
+</html>
